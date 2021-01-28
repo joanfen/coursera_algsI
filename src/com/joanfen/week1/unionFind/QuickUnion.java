@@ -45,7 +45,9 @@ public class QuickUnion {
 
     public static void main(String[] args) {
         try {
-            FileInputStream input = new FileInputStream("src/com/joanfen/unionFind/" + args[0]);
+            // 在 run 的时候下面的文件夹路径写上 txt 的文件路径
+            // 然后在参数中填上 txt 的文件名，如 tinyUF.txt，就可以读取到文件内容了
+            FileInputStream input = new FileInputStream("src/com/joanfen/week1/unionFind/" + args[0]);
             System.setIn(input);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

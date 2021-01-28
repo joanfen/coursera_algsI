@@ -1,4 +1,4 @@
-package com.joanfen;
+package com.joanfen.week2.StacksAndQueues;
 
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;

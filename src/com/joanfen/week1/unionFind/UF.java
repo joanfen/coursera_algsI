@@ -56,7 +56,7 @@ public class UF {
 
     public static void main(String[] args) {
         try {
-            FileInputStream input = new FileInputStream("src/com/joanfen/unionFind/" + args[0]);
+            FileInputStream input = new FileInputStream("src/com/joanfen/week1/unionFind/" + args[0]);
             System.setIn(input);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
