@@ -61,8 +61,13 @@ public class Point implements Comparable<Point> {
      * @return the slope between this point and the specified point
      */
     public double slopeTo(Point that) {
-        /* YOUR CODE HERE */
-        return 0.0f;
+        if (this.x == that.x) {
+            // 如果两个点重叠，则斜率为 -∞
+            if (this.y == that.y) return Double.NEGATIVE_INFINITY;
+            // 垂直于 Y 轴，则斜率为 +∞
+            return Double.POSITIVE_INFINITY;
+        }
+        return (that.y - this.y) * 1.0 / (that.x - this.x);
     }
 
     /**
@@ -78,8 +83,10 @@ public class Point implements Comparable<Point> {
      *         argument point
      */
     public int compareTo(Point that) {
-        /* YOUR CODE HERE */
-        return 0;
+        if (this.y  == that.y && this.x == that.x) return 0;
+        // y0 < y1 或者  x0 < x1 && y0 = y1
+        if (this.y < that.y || (this.y == that.y && this.x < that.x)) return -1;
+        return 1;
     }
 
     /**
@@ -89,8 +96,17 @@ public class Point implements Comparable<Point> {
      * @return the Comparator that defines this ordering on points
      */
     public Comparator<Point> slopeOrder() {
-        /* YOUR CODE HERE */
-        return Point::compareTo;
+        /* Lambda 写法
+         return (o1, o2) -> Double.compare(slopeTo(o1), slopeTo(o2));
+         */
+        /* Comparator 写法，与下面的写法等价
+        return new Comparator<Point>()  {
+            @Override
+            public int compare(Point o1, Point o2) {
+                return Double.compare(slopeTo(o1), slopeTo(o2));
+            }
+        }; */
+        return Comparator.comparingDouble(this::slopeTo);
     }
 
 
