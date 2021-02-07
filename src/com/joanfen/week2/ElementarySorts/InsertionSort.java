@@ -1,4 +1,6 @@
-package com.joanfen.sort;
+package com.joanfen.week2.ElementarySorts;
+
+import com.joanfen.sort.Sort;
 
 /**
  * 插入排序
