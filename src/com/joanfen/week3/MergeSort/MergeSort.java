@@ -10,13 +10,12 @@ public class MergeSort extends Sort {
         for (int k = lo; k <= hi; k++) {
             aux[k] = a[k];
         }
-
         int i = lo, j = mid + 1;
         for (int k = lo; k <= hi; k++) {
-            if (i > mid) a[k] = a[j++]; // 左半边耗尽，直接取右半边数据
-            else if (j > hi) a[k] = a[i++]; // 右半边耗尽，直接取左半边数据
-            else if (less(aux[i], a[j])) a[k] = a[j++]; // 取较小值
-            else a[k] = a[i++];
+            if (i > mid) a[k] = aux[j++];
+            else if (j > hi) a[k] = aux[i++];
+            else if (less(aux[j], aux[i])) a[k] = aux[j++];
+            else a[k] = aux[i++];
         }
         assert isSorted(a, lo, hi);
     }
@@ -32,5 +31,22 @@ public class MergeSort extends Sort {
     private static void sort(Comparable[] a) {
         Comparable[] aux = new Comparable[a.length];
         sort(a, aux, 0, a.length - 1);
+    }
+
+    private static void sortByBottomUp(Comparable[] a) {
+        int N = a.length;
+        Comparable[] aux = new Comparable[N];
+        for (int size = 1; size < N; size = size + size) {
+            for (int lo = 0; lo < N - size; lo += size + size) {
+                merge(a, aux, lo, lo + size + 1, Math.min(lo + size + size - 1, N - 1));
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Integer[] a = new Integer[]{5, 9, 10, 2, 3};
+        sort(a);
+        assert isSorted(a);
+        show(a);
     }
 }
