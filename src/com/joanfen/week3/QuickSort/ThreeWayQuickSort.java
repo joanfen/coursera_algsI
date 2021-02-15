@@ -24,7 +24,7 @@ public class ThreeWayQuickSort extends QuickSort {
     }
 
     public static void main(String[] args) {
-        Integer[] a = new Integer[]{5,  5, 5, 9, 9, 9, 10, 10, 2, 3};
+        Integer[] a = new Integer[]{5, 5, 5, 9, 9, 9, 10, 10, 2, 3};
         new ThreeWayQuickSort().sort(a);
         assert isSorted(a);
         show(a);

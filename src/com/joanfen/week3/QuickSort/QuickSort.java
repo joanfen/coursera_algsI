@@ -33,9 +33,10 @@ public class QuickSort extends Sort {
     }
 
     public static void main(String[] args) {
-        Integer[] a = new Integer[]{5, 9, 10, 2, 3};
+        Integer[] a = new Integer[]{5, 9, 5, 10, 2, 3, 9};
         new QuickSort().sort(a);
-        assert isSorted(a);
+//        System.out.println(partition(a, 0, a.length - 1));
+//        assert isSorted(a);
         show(a);
     }
 
