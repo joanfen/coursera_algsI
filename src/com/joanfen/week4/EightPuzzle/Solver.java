@@ -56,7 +56,7 @@ public class Solver {
     // sequence of boards in a shortest solution; null if unsolvable
     public Iterable<Board> solution() {
         if (isSolvable()) {
-            LinkedList<Board> boards = new LinkedList<Board>();
+            LinkedList<Board> boards = new LinkedList<>();
             SearchNode node = minPQ.min();
             boards.addFirst(node.board);
             while (node.previousNode != null) {
