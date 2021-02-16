@@ -1,9 +1,6 @@
 package com.joanfen.week4.EightPuzzle;
 
-import com.joanfen.week1.unionFind.QuickUnion;
 import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.StdRandom;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,8 +8,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Board {
-    int[][] tiles;
-    int n;
+    private final int[][] tiles;
+    private final int n;
 
     // create a board from an n-by-n array of tiles,
     // where tiles[row][col] = tile at (row, col)
@@ -23,9 +20,7 @@ public class Board {
         }
         this.tiles = new int[n][n];
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                this.tiles[i][j] = tiles[i][j];
-            }
+            System.arraycopy(tiles[i], 0, this.tiles[i], 0, n);
         }
     }
 
@@ -58,7 +53,7 @@ public class Board {
         int count = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (tiles[i][j] != i * n + j + 1) {
+                if (tiles[i][j] != 0 && tiles[i][j] != i * n + j + 1) {
                     count++;
                 }
             }
@@ -74,7 +69,9 @@ public class Board {
                 int tile = tiles[i][j];
                 int targetX = (tile - 1) / n;
                 int targetY = (tile - 1) % n;
-                count += Math.abs(targetX - i) + Math.abs(targetY - j);
+                if (tile != 0) {
+                    count += Math.abs(targetX - i) + Math.abs(targetY - j);
+                }
             }
         }
         return count;
@@ -109,6 +106,7 @@ public class Board {
                 if (tiles[i][j] == 0) {
                     blankRow = i;
                     blankCol = j;
+                    break;
                 }
             }
         }
@@ -153,10 +151,10 @@ public class Board {
             for (int j = 0; j < n; j++)
                 tiles[i][j] = StdIn.readInt();
         Board initial = new Board(tiles);
-        System.out.println("尺寸：" +  initial.dimension());
+        System.out.println("尺寸：" + initial.dimension());
         System.out.println("汉明距离：" + initial.hamming());
         System.out.println("曼哈顿距离：" + initial.manhattan());
-        System.out.println("neighbors：" );
+        System.out.println("neighbors：");
         initial.neighbors().forEach(board ->
                 System.out.println(board.toString())
         );
