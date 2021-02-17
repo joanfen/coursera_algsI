@@ -1,4 +1,4 @@
-/******************************************************************************
+package com.joanfen.week4.EightPuzzle; /******************************************************************************
  *  Compilation:  javac-algs4 PuzzleChecker.java
  *  Execution:    java-algs4 PuzzleChecker filename1.txt filename2.txt ...
  *  Dependencies: Board.java Solver.java
@@ -25,8 +25,6 @@
  *
  ******************************************************************************/
 
-import com.joanfen.week4.EightPuzzle.Board;
-import com.joanfen.week4.EightPuzzle.Solver;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
