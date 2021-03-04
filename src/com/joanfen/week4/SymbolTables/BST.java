@@ -43,6 +43,10 @@ public class BST<Key extends Comparable<Key>, Value> {
         return node.count;
     }
 
+    public boolean contains(Key key) {
+        return get(key) != null;
+    }
+
     public Value get(Key key) {
         Node x = root;
         while (x != null) {
@@ -103,7 +107,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     public void delete(Key key) {
-
+        delete(root, key);
     }
 
     public boolean isEmpty() {

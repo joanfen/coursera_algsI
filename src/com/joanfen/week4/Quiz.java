@@ -1,5 +1,8 @@
 package com.joanfen.week4;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import static java.lang.Double.NaN;
 
 public class Quiz {
@@ -36,5 +39,8 @@ public class Quiz {
     public static void main(String[] args) {
         doubleCheck();
         stringCheck();
+        Collection<Integer> collection = new ArrayList<>();
+        Collection<Integer> collection1 = new ArrayList<>();
+        collection.removeAll(collection1);
     }
 }
